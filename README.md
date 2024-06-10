@@ -1,5 +1,5 @@
 # Overview
-This repository contains a comprehensive licensing system implemented in PHP with Python integration. The system facilitates the generation, management, and validation of licenses, ensuring secure distribution and usage tracking.
+This repository contains a robust licensing system implemented in PHP, with Python integration for license validation. It provides functionalities to generate unique licenses, manage license usage, and validate licenses based on IP, MAC Addresses and Hardware Settings. The system is designed to be easy to use and customizable for various licensing needs.
 
 # Features
 - License Generation: Generate unique license keys for users.
