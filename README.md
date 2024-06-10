@@ -66,6 +66,7 @@ echo $validation_result ? 'License valid' : 'License invalid';
 ```
 5. Python Integration: Use validate.py script for Python-based license validation.
 ```rb
+pip install -r requirements.txt
 python validate.py
 ```
 6. Customization: Modify scripts as needed to fit specific licensing needs. Handle errors and exceptions appropriately for robustness.
