@@ -46,7 +46,7 @@ def get_hardware_settings():
 
 # Function to validate the license
 def validate_license(license_key, license_type, hardware_settings):
-    url = 'your/path/to/validation.php'
+    url = 'https://licenses.joma.dev/api/validation.php'
     mac_address = get_mac_address()
     
     data = {
@@ -59,14 +59,15 @@ def validate_license(license_key, license_type, hardware_settings):
     response = requests.post(url, data=data)
     return response.json()
 
-# Get settings
-config = configparser.ConfigParser()
-config.read('config.ini')
+def check_license():
+    # Get settings
+    config = configparser.ConfigParser()
+    config.read('config.ini')
 
-# Validate License
-license_key = config['SETTINGS']['license']
-license_type = config['SETTINGS']['license_type']
-hardware_settings = get_hardware_settings()
-validation_result = validate_license(license_key, license_type, hardware_settings)
+    # Validate License
+    license_key = config['KEY-CONFIG']['license']
+    license_type = config['KEY-CONFIG']['license_type']
+    hardware_settings = get_hardware_settings()
+    validation_result = validate_license(license_key, license_type, hardware_settings)
 
-print(validation_result)
+    return validation_result
