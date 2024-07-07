@@ -69,6 +69,19 @@ echo $validation_result ? 'License valid' : 'License invalid';
 pip install -r requirements.txt
 python validate.py
 ```
+- 5.5 main.py (Example)
+  ```
+  from validate import check_license
+
+  if __name__ == "__main__":
+    validation_result = check_license()
+
+    if validation_result.get('status') == 'success':
+        print(validation_result['message'])
+        asyncio.run(example_function())
+    else:
+        print("Invalid License. Script will not start.")
+  ```
 6. Customization: Modify scripts as needed to fit specific licensing needs. Handle errors and exceptions appropriately for robustness.
 
 This script will remove expired licenses from the database when executed.
