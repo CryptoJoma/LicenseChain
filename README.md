@@ -90,9 +90,10 @@ This script will remove expired licenses from the database when executed.
 2. Navigate to the "Advanced" or "Cron Jobs" section.
 3. Under "Add New Cron Job", specify the frequency (e.g., daily) and the command to execute the PHP script:
 ```rb
+# Replace /path/to/your/script.php with the path to your PHP script containing the removeExpiredLicenses() function.
+# Example
 php /path/to/your/expired_licenses.php
 ```
-Replace /path/to/your/script.php with the actual path to your PHP script containing the removeExpiredLicenses() function.
 4. Click "Add Cron Job" to save your configuration.
 
-This cron job will run at the specified frequency and execute the PHP script, which in turn will remove expired licenses from the database. Ensure that the PHP script has the appropriate permissions to execute and access the database.
+This cron job will run at the specified frequency and execute the PHP script, which in turn will remove expired licenses from the database. This will ensure the PHP script has the appropriate permissions to execute and access the database.
