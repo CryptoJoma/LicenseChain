@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-time Stats</title>
+    <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&family=Nova+Mono&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #040c1a; /* Dark mode background */
+            color: #ff9100; /* Light text color */
+            font-family: 'Kode Mono', 'Nova Mono', monospace; /* Custom font */
+        }
+        .card {
+            background-color: #2d3748; /* Dark card background */
+            border: 2px solid #ff9100; /* Border color */
+            border-radius: 0.5rem; /* Rounded corners */
+            padding: 1.5rem; /* Padding inside the card */
+            margin: 1rem; /* Space between cards */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-width: 250px; /* Minimum width for cards */
+        }
+        .icon {
+            font-size: 3rem; /* Icon size */
+            margin-bottom: 1rem; /* Space between icon and text */
+        }
+        .btn-reset {
+            background-color: #4a5568; /* Dark button background */
+            color: #ff9100; /* Light text color */
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            margin-top: 2rem;
+        }
+        .btn-reset:hover {
+            background-color: #2d3748; /* Darker button background on hover */
+        }
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap; /* Wrap cards to the next line if necessary */
+        }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4">
+        <h1 id="lastResetTime" class="text-3xl mb-4">Last Reset Time: N/A</h1>
+        <div id="stats" class="stats-container">
+            <div class="card">
+                <i class="fas fa-users icon"></i>
+                <div>
+                    <h2 class="text-xl">Connected Users</h2>
+                    <p id="connectedUsers" class="text-3xl">0</p>
+                </div>
+            </div>
+            <div class="card">
+                <i class="fas fa-id-badge icon"></i>
+                <div>
+                    <h2 class="text-xl">Total Call</h2>
+                    <p id="totalCallIds" class="text-3xl">0</p>
+                </div>
+            </div>
+            <div class="card">
+                <i class="fas fa-paper-plane icon"></i>
+                <div>
+                    <h2 class="text-xl">Send OTP</h2>
+                    <p id="sendOtpCount" class="text-3xl">0</p>
+                </div>
+            </div>
+            <div class="card">
+                <i class="fas fa-key icon"></i>
+                <div>
+                    <h2 class="text-xl">Capture OTP</h2>
+                    <p id="otpCodeCount" class="text-3xl">0</p>
+                </div>
+            </div>
+            <div class="card">
+                <i class="fas fa-stopwatch icon"></i>
+                <div>
+                    <h2 class="text-xl">Call Failed</h2>
+                    <p id="callDurationZeroCount" class="text-3xl">0</p>
+                </div>
+            </div>
+        </div>
+        <button id="resetButton" class="btn-reset">Reset Stats</button>
+    </div>
+
+    <script>
+        const socket = io('https://glacial-tor-37026-4cc1a34729a7.herokuapp.com/'); // Conéctate a tu servidor socket
+
+        socket.on('stats_update', (stats) => {
+            document.getElementById('connectedUsers').textContent = stats.connectedUsers;
+            document.getElementById('totalCallIds').textContent = stats.totalCallIds;
+            document.getElementById('callDurationZeroCount').textContent = stats.callDurationZeroCount;
+            document.getElementById('sendOtpCount').textContent = stats.sendOtpCount;
+            document.getElementById('otpCodeCount').textContent = stats.otpCodeCount;
+        });
+
+        // Optional: Force update every 20 seconds
+        setInterval(() => {
+            socket.emit('request_stats');
+        }, 20000);
+
+        // Reset stats button
+        document.getElementById('resetButton').addEventListener('click', () => {
+            socket.emit('reset_stats');
+            updateLastResetTime();
+        });
+
+        function updateLastResetTime() {
+            const now = new Date();
+            const formattedTime = now.toLocaleString('en-US', { hour12: false });
+            document.getElementById('lastResetTime').textContent = `Last Reset Time: ${formattedTime}`;
+        }
+    </script>
+</body>
+</html>
