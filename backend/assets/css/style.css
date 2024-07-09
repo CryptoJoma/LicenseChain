@@ -1072,15 +1072,15 @@ body.w .sub-menu,body.w .aa-cnt {
 }
 
 @font-face {
-    font-family: hentai-la;
-    src: url(../fonts/hentai-la.ttf?shjs4f) format("truetype"),url(../fonts/hentai-la.woff?shjs4f) format("woff"),url(../fonts/hentai-la.svg?shjs4f#hentai-la) format("svg");
+    font-family: licensechain;
+    src: url(../fonts/licensechain.ttf?shjs4f) format("truetype"),url(../fonts/licensechain.woff?shjs4f) format("woff"),url(../fonts/licensechain.svg?shjs4f#licensechain) format("svg");
     font-weight: 400;
     font-style: normal;
     font-display: block
 }
 
 [class*=fa-]:before,.has-children>a:after,.breadcrumb a:after,.widget-filter .section-title:after {
-    font-family: hentai-la!important;
+    font-family: licensechain!important;
     font-style: normal;
     font-weight: 400;
     font-variant: normal;
@@ -5991,15 +5991,15 @@ body.w .sub-menu,body.w .aa-cnt {
 }
 
 @font-face {
-    font-family: hentai-la;
-    src: url(../fonts/hentai-la.ttf?shjs4f) format("truetype"),url(../fonts/hentai-la.woff?shjs4f) format("woff"),url(../fonts/hentai-la.svg?shjs4f#hentai-la) format("svg");
+    font-family: licensechain;
+    src: url(../fonts/licensechain.ttf?shjs4f) format("truetype"),url(../fonts/licensechain.woff?shjs4f) format("woff"),url(../fonts/licensechain.svg?shjs4f#licensechain) format("svg");
     font-weight: 400;
     font-style: normal;
     font-display: block
 }
 
 [class*=fa-]:before,.has-children>a:after,.breadcrumb a:after,.widget-filter .section-title:after {
-    font-family: hentai-la!important;
+    font-family: licensechain!important;
     font-style: normal;
     font-weight: 400;
     font-variant: normal;
