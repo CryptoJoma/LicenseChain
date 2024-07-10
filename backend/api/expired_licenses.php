@@ -5,6 +5,4 @@ include '../archives/functions.php';
 removeExpiredLicenses();
 echo "Expired licenses have been removed successfully.";
 
-check_minutes();
-echo "Minutes balance have been updated successfully for all the users.";
 ?>
