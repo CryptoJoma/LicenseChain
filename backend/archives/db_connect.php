@@ -1,9 +1,9 @@
 <?php
 // db_connect.php
 $host = 'localhost';
-$username = 'bjqgjlck_joma';
-$password = 'tDl=RDT7!JbN';
-$database = 'bjqgjlck_joma_portfolio';
+$username = 'DB_USER';
+$password = 'DB_PASS';
+$database = 'DATABASE';
 
 $db = new mysqli($host, $username, $password, $database);
 
