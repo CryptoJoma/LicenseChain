@@ -46,7 +46,7 @@ def get_hardware_settings():
 
 # Function to validate the license
 def validate_license(license_key, license_type, hardware_settings):
-    url = 'https://licenses.joma.dev/api/validation.php'
+    url = 'https://licensechain.app/api/validation.php'
     mac_address = get_mac_address()
     
     data = {
