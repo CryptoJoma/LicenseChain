@@ -10,7 +10,7 @@ This repository contains a robust licensing system implemented in PHP, with Pyth
 - Database Management: Utilizes MySQL database for storing license data.
 
 # Installation
-- Prerequisites:
+Prerequisites:
 - PHP 7.4 or higher
 - MySQL database
 - Python 3.6 or higher
