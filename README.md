@@ -21,38 +21,52 @@ Prerequisites:
 ```rb
 -- database_schema.sql
 
--- Create the 'licenses' table to store license information
-CREATE TABLE licenses (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    email VARCHAR(255) NOT NULL,
-    license_key VARCHAR(32) NOT NULL UNIQUE,
-    expiration_date DATE NOT NULL,
-    used_macs VARCHAR(255) DEFAULT '',
-    used_ips VARCHAR(255) DEFAULT ''
-);
+-- --------------------------------------------------------
 
--- Create the 'license_usage' table to track license usage
-CREATE TABLE license_usage (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    license_key VARCHAR(32) NOT NULL,
-    ip_address VARCHAR(45) NOT NULL,
-    mac_address VARCHAR(17) NOT NULL,
-    license_type int(11) NOT NULL,
-    processor VARCHAR(255) NOT NULL,
-    ram_amount VARCHAR(11) NOT NULL,
-    disk_amount int(11) NOT NULL,
-    hdd_id VARCHAR(16) NOT NULL,
-    FOREIGN KEY (license_key) REFERENCES licenses(license_key)
-);
+--
+-- Table structure for table `licenses`
+--
+
+CREATE TABLE `licenses` (
+  `id` int(11) NOT NULL,
+  `uid` int(11) NOT NULL,
+  `license_type` enum('1','69') NOT NULL DEFAULT '1',
+  `license_key` varchar(255) NOT NULL,
+  `expiration_date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `used_ips` mediumtext DEFAULT NULL,
+  `ips_limit` int(11) NOT NULL DEFAULT 4,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `used_macs` mediumtext DEFAULT '',
+  `macs_limit` int(11) NOT NULL DEFAULT 4
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `license_usage`
+--
+
+CREATE TABLE `license_usage` (
+  `id` int(11) NOT NULL,
+  `license_key` varchar(255) NOT NULL,
+  `ip_address` varchar(255) NOT NULL,
+  `mac_address` varchar(255) NOT NULL,
+  `license_type` int(11) NOT NULL DEFAULT 1,
+  `processor` varchar(255) NOT NULL,
+  `ram_amount` int(11) NOT NULL,
+  `disk_amount` int(11) NOT NULL,
+  `hdd_id` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 ```
 2. Configure Settings: Update database connection details in db_connect.php.
 3. Generate License: Use issueLicense() function in functions.php to generate licenses.
 ```rb
 include 'functions.php';
 
-$email = 'user@example.com';
+$userID = '12345';
 $expiration_date = '2024-12-31';
-$license_key = issueLicense($email, $expiration_date);
+$license_key = issueLicense($userID, $expiration_date);
 ```
 4. Validate License: Utilize validateLicense() function for license validation.
 ```rb
