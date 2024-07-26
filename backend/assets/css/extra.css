@@ -1,0 +1,45 @@
+body {
+  color: #0DFF92; /* Neon Green */
+  font-family: 'IBM Plex Mono', monospace;
+}
+.bg-dark {
+  background-color: #1A1A1A; /* Slightly Lighter Black */
+}
+.text-blue-neon {
+  color: #0DB8DE; /* Neon Blue */
+}
+.text-green-neon {
+  color: #0DFF92; /* Neon Green */
+}
+.text-red-neon {
+  color: #FF2C55; /* Neon Red */
+}
+.text-purple-neon {
+  color: #9400D3; /* Neon Purple */
+}
+a:hover, button:hover {
+  color: #0DFF92; /* Neon Green */
+}
+table {
+  background-color: #1A1A1A;
+}
+thead {
+  background-color: #121212;
+}
+tbody tr {
+  background-color: #1A1A1A;
+}
+tbody tr:nth-child(odd) {
+  background-color: #2A2A2A;
+}
+th, td {
+  color: #0DFF92;
+}
+.form-dark {
+  background-color: #1A1A1A;
+  color: #0DFF92;
+}
+.form-dark input, .form-dark textarea {
+  background-color: #2A2A2A;
+  color: #0DFF92;
+}
