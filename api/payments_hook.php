@@ -6,7 +6,7 @@ include '../archives/functions.php';
 if(session_id() == "")
 	session_start();
 // Constants
-define('NOWPAYMENTS_API_KEY', 'VSE4XHE-BNWM6XB-JRCT7HR-6WEY3T8'); // Updated API key
+define('NOWPAYMENTS_API_KEY', 'YOUR_NOWPAYMENTS_API_KEY'); // Updated API key
 define('MAX_RETRIES', 3); // Number of retries for payment creation
 
 // Handle request
